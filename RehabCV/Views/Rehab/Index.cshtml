@@ -1,0 +1,84 @@
+﻿@model IEnumerable<RehabCV.ViewModels.RehabViewModel>
+
+@{ ViewData["Title"] = "Реабілітація"; }
+
+@await Html.PartialAsync("_IndexHeader")
+
+<h2 style="margin-top: 12%; text-align: center; font-family: Geometria; font-weight: 700; font-size: 50px; color: #061e37;">@ViewData["Title"]</h2>
+
+@using (Html.BeginForm("Index", "Rehab", FormMethod.Get))
+{
+    @Html.TextBox("searchDate")<input type="submit" class="btn btn-primary" style="margin-left: 2%;" value="Знайти"/>
+}
+<br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                №
+            </th>
+            <th>
+                Ім'я
+            </th>
+            <th>
+                По-батькові
+            </th>
+            <th>
+               Прізвище
+            </th>
+            <th>
+                Захворювання
+            </th>
+            <th>
+                Форма
+            </th>
+            <th>
+               Тривалість
+            </th>
+            <th>
+                Дата реабілітації
+            </th>
+            <th>
+                Дата комісії
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(rowNo += 1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstNameOfChild) 
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleNameOfChild)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastNameOfChild)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameOfDisease)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfRehab)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfCommission)
+                </td>
+            </tr>
+         }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_IndexFooter")

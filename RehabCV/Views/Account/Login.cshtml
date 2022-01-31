@@ -1,0 +1,28 @@
+﻿@model RehabCV.ViewModels.LoginViewModel
+@{ ViewData["Title"] = "Вхід"; }
+
+@await Html.PartialAsync("_IndexHeader")
+
+<div class="row">
+    <div class="col-md-4" style="margin-top: 12%; margin-left: 35%;">
+        <h2 style="text-align: center; font-family: Geometria; font-weight: 700; font-size: 40px; color: #061e37;">@ViewData["Title"]</h2>
+        <form asp-route-returnUrl="@ViewData[" ReturnUrl"]" method="post" autocomplete="off">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label><br />
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label><br />
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Увійти" class="btn btn-primary" style="width: 100%" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("_IndexFooter")

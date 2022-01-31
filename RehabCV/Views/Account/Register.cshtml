@@ -1,0 +1,88 @@
+﻿@model RehabCV.ViewModels.RegisterViewModel
+@{ ViewData["Title"] = "Реєстрація"; }
+
+@await Html.PartialAsync("_IndexHeader")
+
+<style>
+    input[type=text]:focus {
+        border: 3px solid #555;
+    }
+</style>
+<div class="row py-5 mt-4 align-items-center" style="margin-top: 1%; ">
+    <div class="col-md-5 pr-lg-5 mb-5 mb-md-0" style="margin-top: 1%;">
+        <img src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
+        <h2 style="text-align: center; font-family: Geometria; font-weight: 700; font-size: 40px; color: #061e37;">@ViewData["Title"]</h2>
+        </div>
+    <div class="col-md-5 col-lg-6 ml-auto" style="margin-top:5%;">
+        <form method="post" asp-controller="Account" asp-action="Register" autocomplete="off">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstNameOfUser" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <input asp-for="FirstNameOfUser" class="form-control" />
+                <span asp-validation-for="FirstNameOfUser" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="MiddleNameOfUser" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <input asp-for="MiddleNameOfUser" class="form-control" />
+                <span asp-validation-for="MiddleNameOfUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastNameOfUser" style="font-family: Geometria;  font-size: 20px; color: #061e37;"></label>
+                <input asp-for="LastNameOfUser" class="form-control" />
+                <span asp-validation-for="LastNameOfUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" style="font-family: Geometria;  font-size: 20px; color: #061e37;"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                <p style="color: gray">*номер телефону має містити 13 символів, вказавши код +380</p>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsEmail" style="font-family: Geometria;  font-size: 20px; color: #061e37;"></label>
+                <input asp-for="IsEmail" type="checkbox" id="isEmail" onclick="checkIsEmail()" />
+            </div>
+            <div class="form-group" id="email" style="display:none">
+                <label asp-for="Email" style="font-family: Geometria;  font-size: 20px; color: #061e37;"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="login">
+                <label asp-for="Login" style="font-family: Geometria;  font-size: 20px; color: #061e37;"></label>
+                <input asp-for="Login" class="form-control" />
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <p style="color: gray">*пароль має містити символи верхнього та нижнього регістрів, спеціальні символи та цифри</p>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" style="font-family: Geometria;  font-size: 20px; color: #061e37;"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%">Зареєструватись</button>
+        </form>
+    </div>
+</div>
+<br />
+
+@await Html.PartialAsync("_IndexFooter")
+
+<script>
+    function checkIsEmail() {
+        var checkBox = document.getElementById("isEmail");
+        var email = document.getElementById("email");
+        var login = document.getElementById("login");
+        if (checkBox.checked == true) {
+            email.style.display = "block";
+            login.style.display = "none";
+        } else {
+            email.style.display = "none";
+            login.style.display = "block";
+        }
+    }
+</script>

@@ -1,0 +1,75 @@
+﻿@model RehabCV.DTO.ChildDTO
+@{ ViewData["Title"] = "Записати дитину на реабілітацію"; }
+
+@await Html.PartialAsync("_IndexHeader")
+
+<div class="row" style="margin-top: 12%;">
+    <div class="col-md-4" style="margin: auto">
+        <h2 style="text-align: center; font-family: Geometria; font-weight: 700; font-size: 40px; color: #061e37;">@ViewData["Title"]</h2>
+        <form method="post" asp-controller="Child" asp-action="Create" id="child">
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstNameOfChild" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <input asp-for="FirstNameOfChild" class="form-control" />
+                <span asp-validation-for="FirstNameOfChild" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MiddleNameOfChild" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <input asp-for="MiddleNameOfChild" class="form-control" />
+                <span asp-validation-for="MiddleNameOfChild" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastNameOfChild" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <input asp-for="LastNameOfChild" class="form-control" />
+                <span asp-validation-for="LastNameOfChild" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthdayOfChild" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <input type="date" asp-for="BirthdayOfChild" class="form-control" />
+                <span asp-validation-for="BirthdayOfChild" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupId" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <select name="GroupId" id="GroupId" form="child" class="custom-select" asp-items="ViewBag.groups">
+                </select>
+                <span asp-validation-for="GroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Region" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <select name="Region" form="child" class="custom-select">
+                    <option>Виберіть область</option>
+                    <option value="Чернівецька">Чернівецька</option>
+                </select>
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="District" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <select name="District" form="child" class="custom-select">
+                    <option>Виберіть район</option>
+                    <option value="Чернівецький">Чернівецький</option>
+                    <option value="Дністровський">Дністровський</option>
+                    <option value="Вижницький">Вижницький</option>
+                </select>
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" style="font-family: Geometria; font-size: 20px; color: #061e37;"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%">Далі</button>
+        </form>
+    </div>
+</div>
+<br/>
+@await Html.PartialAsync("_IndexFooter")
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

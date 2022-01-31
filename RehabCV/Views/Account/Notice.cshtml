@@ -1,0 +1,12 @@
+﻿@{ ViewData["Title"] = "Повідомлення"; }
+
+@await Html.PartialAsync("_IndexHeader")
+
+<div class="row">
+    <div class="col-md-4" style="margin-top: 12%; margin-left: 35%;">
+        <h2 style="text-align: center; font-family: Geometria; font-weight: 700; font-size: 40px; color: #061e37;">@ViewData["Title"]</h2>
+        <h4 style="font-family: Geometria; font-size: 20px; color: #061e37;">Для завершення реєстрації перевірте електронну пошту та перейдіть за посиланням, зазначеним в листі</h4>
+    </div>
+</div>
+
+@await Html.PartialAsync("_IndexFooter")

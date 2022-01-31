@@ -1,0 +1,73 @@
+﻿@model RehabCV.DTO.NotificationDTO
+
+@{ ViewData["Title"] = "Інформація про запис"; }
+
+@await Html.PartialAsync("_IndexHeader")
+
+<div class="row">
+    <div class="col-md-4" style="margin: auto">
+        <h2 style="text-align: center">@ViewData["Title"]</h2>
+        <form method="post" asp-controller="Rehab" asp-action="Notification" id="rehab">
+            <input type="hidden" name="ChildId" value="@ViewBag.children" />
+
+            <div class="form-group">
+                @Html.DisplayFor(model => model.Notification)
+            </div>
+            @if (Model.AddedToGroup)
+            {
+                <a asp-controller="Home" asp-action="Index" id="close" style="width: 100%" class="btn btn-primary">Закрити</a>
+            }
+            else
+            {
+                <div class="form-group">
+                    <label asp-for="AddToReserve"></label>
+                    <input asp-for="AddToReserve" type="checkbox" id="reserve" onclick="checkReserve()" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddToAnotherDate"></label>
+                    <input asp-for="AddToAnotherDate" type="checkbox" id="anotherDate" onclick="checkDate()" />
+                </div>
+                <div class="form-group" id="dates" style="display:none">
+                    <label asp-for="DateId"></label>
+                    <select name="DateId" id="DateId" form="rehab" class="custom-select" asp-items="ViewBag.dates">
+                    </select>
+                    <span asp-validation-for="DateId" class="text-danger"></span>
+                </div>
+                <a asp-controller="Home" asp-action="Index" id="close" style="width: 100%; display: none" class="btn btn-primary">Закрити</a>
+                <button type="submit" class="btn btn-primary" id="edit" style="width: 100%; display:none">Змінити</button>
+            }
+        </form>
+    </div>
+
+</div>
+
+@await Html.PartialAsync("_IndexFooter")
+
+
+<script>
+    function checkDate() {
+        var checkBox = document.getElementById("anotherDate");
+        var dates = document.getElementById("dates");
+        var edit = document.getElementById("edit");
+        if (checkBox.checked == true) {
+            dates.style.display = "block";
+            edit.style.display = "block";
+        } else {
+            dates.style.display = "none";
+            edit.style.display = "none";
+        }
+    }
+</script>
+<script>
+    function checkReserve() {
+        var checkBox = document.getElementById("reserve");
+        var close = document.getElementById("close");
+        if (checkBox.checked == true) {
+            close.style.display = "block";
+        } else {
+            close.style.display = "none";
+        }
+    }
+</script>
+
+

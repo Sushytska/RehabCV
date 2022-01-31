@@ -1,0 +1,32 @@
+﻿@model RehabCV.DTO.NumberOfChildrenDTO
+@{
+    ViewData["Title"] = "Змінити кількість дітей";
+}
+
+@await Html.PartialAsync("_IndexHeader")
+
+<div class="row" style="margin-top: 12%;">
+    <div class="col-md-4" style="margin: auto">
+        <h2 style="text-align: center">@ViewData["Title"]</h2>
+        <form method="post" asp-controller="NumberOfCh" asp-action="Update">
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NumberOfChildren"></label>
+                <input asp-for="NumberOfChildren" class="form-control" />
+                <span asp-validation-for="NumberOfChildren" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" style="width: 100%" />
+            </div>
+        </form>
+        <a asp-action="Index">Назад</a>
+    </div>
+</div>
+
+@await Html.PartialAsync("_IndexFooter")
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

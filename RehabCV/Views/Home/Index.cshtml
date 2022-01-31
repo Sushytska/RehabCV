@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/rotating-card.css" rel="stylesheet" />
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <style>
+        .blog .image {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 3px 0 0 3px;
+        }
+
+            .blog .image img {
+                width: 100%;
+                height: auto;
+            }
+
+        .blog .date {
+            top: -10px;
+            z-index: 99;
+            width: 65px;
+            right: -10px;
+            height: 65px;
+            padding: 10px;
+            position: absolute;
+            color: #FFFFFF;
+            font-weight: bold;
+            background: #00D9A5;
+            border-radius: 999px;
+        }
+
+        .blog .blog-details {
+            padding: 0 20px 0 0;
+        }
+
+        .blog {
+            padding: 0;
+        }
+
+        .well {
+            border: 0;
+            padding: 20px;
+            min-height: 63px;
+            background: #fff;
+            box-shadow: none;
+            border-radius: 3px;
+            position: relative;
+            max-height: 100000px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .blog .blog-details h2 {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .blog .date .blog-number {
+            color: #fff;
+            display: block;
+            font-size: 24px;
+            text-align: center;
+        }                    
+    </style>
+</head>
+<body>
+
+
+
+    <!-- Header -->
+    @await Html.PartialAsync("_IndexHeader")
+    <!-- Header -->
+    <br />
+    <br />
+    <div id="carouselExampleIndicators" class="s carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+        </ol>
+        <div class="carousel-inner c-wrapper">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="~/img/blog/b_1.jpg" alt="Первый слайд">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/img/blog/b_2.jpg" alt="Второй слайд">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/img/blog/b_3.jpg" alt="Третий слайд">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/img/blog/b_4.jpg" alt="Третий слайд">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/img/blog/b_5.jpg" alt="Третий слайд">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/img/blog/b_6.jpg" alt="Третий слайд">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/img/blog/b_7.jpg" alt="Третий слайд">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <br />
+    <div class="wrapper card" style="height: 280px;">
+        <section class="blog-post-area card-body" id="slide">
+            <div class="container">
+                <div class="row">
+                    <div class="blog-post-area-style">
+                        <div class="col-md-12">
+                            <div class="single-post-big">
+                                <div class="icon">
+
+
+                                    <div class="big-text" style=" margin-top: -2%;">
+                                        <h3 style="font-family: Geometria; font-weight: 700; font-size: 50px; color: #061e37;">Про центр</h3>
+
+                                        <p style="font-family: Geometria; font-size:20px;">Буковинський центр комплексної реабілітації для дітей з інвалідністю «Особлива дитина» – реабілітаційна установа, цільовим призначенням якої є здійснення комплексу реабілітаційних заходів, спрямованих на створення умов для всебічного розвитку дітей з інвалідністю віком до 18 років та дітей віком до трьох років (включно), які належать до групи ризику.</p>
+
+
+                                        <h5 style="margin-left: 80%;"> <a class="btn btn-primary ml-lg-3" href="https://www.rehab.cv.ua/pro-nas/">Детальніше</a></h5>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <br />
+    <div class="row" id="di">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="well blog" style="color: #00D9A5">
+
+                <div class="date primary">
+                    <span class="blog-date">Nov</span>
+                    <span class="blog-number">16</span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <div class="image">
+                            <img src="~/img/at.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="blog-details">
+                            <h2 style="font-family: Geometria; font-weight: 700; font-size: 40px; color: #061e37;">Оголошення</h2>
+                            <p style="color: #061e37;">
+                                Оголошується набір в нову групу.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="well blog" style="color: #00D9A5">
+
+                        <div class="date primary">
+                            <span class="blog-date">Oct</span>
+                            <span class="blog-number">26</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                <div class="image">
+                                    <img src="~/img/at.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="blog-details">
+                                    <h2 style="font-family: Geometria; font-weight: 700; font-size: 40px; color: #061e37;">Оголошення</h2>
+                                    <p style="color: #061e37;">
+                                        Відкрито набір у нову групу.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        
+    
+    <section class="pt-5 pb-5" id="doc">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 text-center" style="margin-left: 25%;">
+
+                    <h3 style="font-family: Geometria; font-weight: 700; font-size: 50px; color: #061e37;">Спеціалісти</h3>
+
+                    <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+
+                    <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-container">
+                                            <div class="card">
+                                                <div class="front">
+                                                    <img class="img-fluid" style="height:70%; margin-left:10%; margin-top: 1%;" src="~/img/doctors/d_1.jpg">
+
+                                                    <h3 class="name">
+                                                        Закрутна Тетяна Георгіївна
+                                                    </h3>
+                                                    <p class="profession" style="margin-bottom:0;">Директор</p>
+                                                    <p class="profession" style="margin : 0; padding-top:0;">Поведінковий терапевт</p>
+                                                    <p class="profession" style="margin : 0; padding-top:0;">Практичний психолог</p>
+
+                                                </div>
+                                                <div class="back">
+                                                    <p class="text-center" style="margin-top:45%;">Застосовує в роботі сучасний підхід за методом АВА-терапії. Спеціалізується на корекції поведінкових порушень у дітей з розладом аутичного спектру.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-container">
+                                            <div class="card">
+                                                <div class="front">
+                                                    <img class="img-fluid" style="height:70%; margin-left:10%; margin-top: 1%;" src="~/img/doctors/d_2.jpg">
+
+                                                    <h3 class="name">
+                                                        Микалюк Михайло Михайлович
+                                                    </h3>
+                                                    <p class="profession" style="margin-bottom:0;">Заступник директора з медичної частини</p>
+                                                    <p class="profession" style="margin : 0; padding-top:0;">Медичний психолог</p>
+
+
+                                                </div>
+                                                <div class="back">
+                                                    <p class="text-center" style="margin-top:45%;">Очолює та координує роботу відділу альтернативної комунікації та інтерактивних технологій в реабілітації.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-container">
+                                            <div class="card">
+                                                <div class="front">
+                                                    <img class="img-fluid" style="height:70%; margin-left:10%; margin-top: 1%;" src="~/img/doctors/d_3.jpg">
+
+                                                    <h3 class="name">
+                                                        Бірєва Валерія Миколаївна
+                                                    </h3>
+                                                    <p class="profession" style="margin-bottom:0;">Головний бухгалтер</p>
+
+                                                </div>
+                                                <div class="back">
+                                                    <p class="text-center" style="margin-top:45%;">Головний бухгалтер</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-container">
+                                            <div class="card">
+                                                <div class="front">
+                                                    <img class="img-fluid" style="height:70%; margin-left:10%; margin-top: 1%;" src="~/img/doctors/d_4.jpg">
+
+                                                    <h3 class="name">
+                                                        Перебиківська Тетяна Олександрівна
+                                                    </h3>
+                                                    <p class="profession" style="margin-bottom:0;">Бухгалтер</p>
+
+                                                </div>
+                                                <div class="back">
+                                                    <p class="text-center" style="margin-top:45%;">Бухгалтер</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-container">
+                                            <div class="card">
+                                                <div class="front">
+                                                    <img class="img-fluid" style="height:70%; margin-left:10%; margin-top: 1%;" src="~/img/doctors/d_5.jpg">
+
+                                                    <h3 class="name">
+                                                        Русаль Василь Григорович
+                                                    </h3>
+                                                    <p class="profession" style="margin-bottom:0;">Інспектор з охорони праці</p>
+
+                                                </div>
+                                                <div class="back">
+                                                    <p class="text-center" style="margin-top:45%;">Інспектор з охорони праці</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-container">
+                                            <div class="card">
+                                                <div class="front">
+                                                    <img class="img-fluid" style="height:70%; margin-left:10%; margin-top: 1%;" src="~/img/doctors/d_6.jpg">
+
+                                                    <h3 class="name">
+                                                        Кім Іванна Іванівна
+                                                    </h3>
+                                                    <p class="profession" style="margin-bottom:0;">Завідувач господарством</p>
+
+                                                </div>
+                                                <div class="back">
+                                                    <p class="text-center" style="margin-top:45%;">Завідувач господарством</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+    @await Html.PartialAsync("_IndexFooter")
+    <!-- Footer -->
+
+    <script src="~/js/jquery-3.5.1.min.js"></script>
+
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/vendor/wow/wow.min.js"></script>
+
+    <script src="~/js/theme.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+<form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+    @if (User.IsInRole("Parent"))
+    {
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Child" asp-action="Create">Записати дитину на реабілітацію</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link"> @User.Identity.Name </a>
+            </li>
+            <li class="nav-item active">
+                <button type="submit" class="btn btn-primary ml-lg-3">Log out</button>
+            </li>
+        </ul>
+    }
+    @if (User.IsInRole("Admin"))
+    {
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Event" asp-action="Index">Календар</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Group" asp-action="Index">Групи захворювань</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Child" asp-action="Parent">Батьки</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Rehab" asp-action="Index">Реабілітація</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Reserve" asp-action="Index">Резерв</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link"> @User.Identity.Name </a>
+            </li>
+            <li class="nav-item active">
+                <button type="submit" class="btn btn-primary ml-lg-3">Log out</button>
+            </li>
+        </ul>
+    }
+</form>
+}
+else
+{
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="btn btn-primary ml-lg-3" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary ml-lg-3" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+        </li>
+    </ul>
+}

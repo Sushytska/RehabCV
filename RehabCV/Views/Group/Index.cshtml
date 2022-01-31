@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RehabCV.Models.Group>
+
+@{ ViewData["Title"] = "Групи захворювань"; }
+
+@await Html.PartialAsync("_IndexHeader")
+
+<h2  style="margin-top: 12%; text-align: center; font-family: Geometria; font-weight: 700; font-size: 50px; color: #061e37;">@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Додати групу захворювання</a> 
+    <br><br>
+    <a asp-controller="NumberOfCh" asp-action="Index" class="btn btn-primary">Кількість дітей в групі</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Назва захворювання
+            </th>
+            <th>
+                Кількість дітей у відсотках
+            </th>
+            <th>
+               Пріоритет
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOfDisease)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentOfChildren)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="width: 60%">Видалити</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_IndexFooter")

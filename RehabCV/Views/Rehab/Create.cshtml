@@ -1,0 +1,86 @@
+﻿@model RehabCV.DTO.RehabDTO
+
+@{ ViewData["Title"] = "Записати на реабілітацію"; }
+
+@await Html.PartialAsync("_IndexHeader")
+
+<div class="row" style="margin-top: 12%;">
+    <div class="col-md-4" style="margin: auto">
+        <h2 style="text-align: center">@ViewData["Title"]</h2>
+        <form method="post" asp-controller="Rehab" asp-action="Create" id="rehab">
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" name="ChildId" value="@ViewBag.children" />
+   
+                <div class="form-group">
+                    <label asp-for="Form"></label>
+                    <select name="Form" id="viewOption" form="rehab" class="custom-select" onclick="show()">
+                        <option>Виберіть форму</option>
+                        <option value="Амбулаторна">Амбулаторна</option>
+                        <option value="Стаціонарна">Стаціонарна</option>
+                    </select>
+                    <span asp-validation-for="Form" class="text-danger"></span>
+                </div>
+                <div class="form-group" id="ambylator">
+                    <label asp-for="DurationAmbylator"></label>
+                    <select name="DurationAmbylator" form="rehab" class="custom-select">
+                        <option>Виберіть тривалість</option>
+                        <option value="2 тижні">2 тижні</option>
+                        <option value="1 місяць">1 місяць</option>
+                        <option value="2 місяці">2 місяці</option>
+                        <option value="3 місяці">3 місяці</option>
+                    </select>
+                    <span asp-validation-for="DurationAmbylator" class="text-danger"></span>
+                </div>
+                <div class="form-group" id="statsionar" style="display:none">
+                    <label asp-for="DurationStatsionar"></label>
+                    <select name="DurationStatsionar" form="rehab" class="custom-select">
+                        <option>Виберіть тривалість</option>
+                        <option value="2 тижні">2 тижні</option>
+                        <option value="4 тижні">4 тижні</option>
+                        <option value="8 тижнів">8 тижнів</option>
+                    </select>
+                    <span asp-validation-for="DurationStatsionar" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateOfRehabId"></label>
+                    <select name="DateOfRehabId" id="DateOfRehabId" form="rehab" class="custom-select" asp-items="ViewBag.datesRehab">
+                    </select>
+                    <span asp-validation-for="DateOfRehabId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateOfCommissionId"></label>
+                    <select name="DateOfCommissionId" id="DateOfCommissionId" form="rehab" class="custom-select" asp-items="ViewBag.datesCommiss">
+                    </select>
+                    <span asp-validation-for="DateOfCommissionId" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%">Додати</button>
+            </form>
+        </div>
+    </div>
+
+    @await Html.PartialAsync("_IndexFooter")
+
+    @section Scripts {
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+        <script>
+            function show() {
+                var view = document.getElementById("viewOption");
+                var amb = document.getElementById("ambylator");
+                var sts = document.getElementById("statsionar");
+                var strUser = view.options[view.selectedIndex].text;
+                if (strUser == "Амбулаторна") {
+                    amb.style.display = "block";
+                } else {
+                    amb.style.display = "none";
+                }
+                if (strUser == "Стаціонарна") {
+                    sts.style.display = "block";
+                } else {
+                    sts.style.display = "none";
+                }
+            }
+        </script>
+    }
+
