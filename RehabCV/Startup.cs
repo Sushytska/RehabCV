@@ -37,7 +37,7 @@ namespace RehabCV
         {
             services.Configure<ApplicationConfiguration>(Configuration.GetSection("ApplicationConfiguration"));
             services.AddDbContext<RehabCVContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
 
             services.AddIdentity<User, IdentityRole>()
