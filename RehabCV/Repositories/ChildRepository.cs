@@ -31,7 +31,6 @@ namespace RehabCV.Repositories
         public async Task<Child> FindById(string id)
         {
             return await _context.Children.FirstOrDefaultAsync(x => x.Id == id);
-            
         }
 
         public async Task<IEnumerable<Child>> FindByParentId(string parentId)
