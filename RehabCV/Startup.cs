@@ -37,7 +37,7 @@ namespace RehabCV
         {
             services.Configure<ApplicationConfiguration>(Configuration.GetSection("ApplicationConfiguration"));
             services.AddDbContext<RehabCVContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
 
             services.AddIdentity<User, IdentityRole>()
@@ -57,6 +57,7 @@ namespace RehabCV
             services.AddScoped<INumberOfCh<NumberOfChildren>, NumberOfChRepository>();
             services.AddScoped<IReserve<Reserve>, ReserveRepository>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<ITherapist<Therapist>, TherapistRepository>();
 
             services.AddHostedService<OneDayHostedService>();
             services.AddSingleton<IWorker, Worker>();

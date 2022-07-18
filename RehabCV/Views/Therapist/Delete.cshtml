@@ -1,0 +1,43 @@
+﻿@model RehabCV.DTO.TherapistDTO
+
+@{
+    ViewData["Title"] = "Видалити";
+}
+
+@await Html.PartialAsync("_IndexHeader")
+
+<div style="margin-top: 12%;">
+    <div class="modal-content">
+        <div class="modal-body" style="margin: auto">
+            <h2 style="text-align: center">@ViewData["Title"]</h2>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FirstNameOfTherapist)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FirstNameOfTherapist)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MiddleNameOfTherapist)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MiddleNameOfTherapist)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.LastNameOfTherapist)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.LastNameOfTherapist)
+                </dd>
+
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="submit" value="Видалити" class="btn btn-danger" style="width: 100%" />
+            </form>
+        </div>
+        <a asp-action="Index">Назад до списку</a>
+    </div>
+</div>
+
+@await Html.PartialAsync("_IndexFooter")
