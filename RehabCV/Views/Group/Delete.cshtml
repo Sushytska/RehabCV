@@ -6,10 +6,15 @@
 
 @await Html.PartialAsync("_IndexHeader")
 
+<h2  style="margin-top: 12%; text-align: center; font-family: Geometria; font-weight: 700; font-size: 40px; color: #061e37;">@ViewData["Title"]</h2>
+
+<p>
+     <a asp-action="Index">Назад до списку</a>
+</p>
+
 <div>
     <div class="modal-content">
-        <div class="modal-body" style="margin: auto">
-            <h2 style="text-align: center">@ViewData["Title"]</h2>
+        <div class="modal-body" style="margin: 10px">
             <dl class="row">
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.NameOfDisease)
@@ -20,10 +25,10 @@
             </dl>
 
             <form asp-action="Delete">
-                <input type="submit" value="Видалити" class="btn btn-danger" style="width: 100%" />
+                <input type="submit" value="Видалити" class="btn btn-danger" style="width: 30%; margin-left: 35%" />
             </form>
         </div>
-        <a asp-action="Index">Назад до списку</a>
+       
     </div>
 </div>
 

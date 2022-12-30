@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RehabCV.Interfaces
 {
-    public interface IClild<TEntity> : IEvent<TEntity>
+    public interface IChild<TEntity> : IEvent<TEntity>
     {
         public Task<IEnumerable<TEntity>> FindByParentId(string id);
     }

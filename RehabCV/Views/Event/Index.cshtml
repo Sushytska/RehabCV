@@ -1,90 +1,100 @@
-﻿@{ ViewBag.Title = "Index"; }
-
-@await Html.PartialAsync("_IndexHeader")
+﻿@await Html.PartialAsync("_IndexHeader")
 
 <h2 style="margin-top: 12%; text-align: center; font-family: Geometria; font-weight: 700; font-size: 50px; color: #061e37;">Календар</h2>
 <div id="calender"></div>
 
 <div id="myModal" class="modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title"><span id="eventTitle"></span></h3>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <button id="btnDelete" class="btn btn-danger btn-sm pull-right">
-                    <span class="glyphicon glyphicon-remove"></span> Видалити
-                </button>
-                <button id="btnEdit" class="btn btn-primary btn-sm pull-right" style="margin-right:5px;">
-                    <span class="glyphicon glyphicon-pencil"></span> Редагувати
-                </button>
-                <p id="pDetails"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title"><span id="eventTitle"></span></h3>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<button id="btnDelete" class="btn btn-danger btn-sm pull-right">
+					<span class="glyphicon glyphicon-remove"></span> Видалити
+				</button>
+				<button id="btnEdit" class="btn btn-primary btn-sm pull-right" style="margin-right:5px;">
+					<span class="glyphicon glyphicon-pencil"></span> Редагувати
+				</button>
+				<p id="pDetails"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div id="myModalSave" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Зберегти подію</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <input type="hidden" id="hdEventID" value="0" />
-                    <div class="form-group">
-                        <label>Тема</label>
-                        <input type="text" id="txtSubject" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Початок</label>
-                        <div class="input-group" id="dtp1">
-                            <input type="text" id="txtStart" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  На цілий день</label>
-                        </div>
-                    </div>
-                    <div class="form-group" id="divEndDate" style="display:none">
-                        <label>Кінець</label>
-                        <div class="input-group date" id="dtp2">
-                            <input type="text" id="txtEnd" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Опис</label>
-                        <textarea id="txtDescription" rows="3" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Колір події</label>
-                        <select id="ddThemeColor" class="form-control">
-                            <option value="">По замовчуванню</option>
-                            <option value="red">Червоний</option>
-                            <option value="blue">Голубий</option>
-                            <option value="black">Чорний</option>
-                            <option value="green">Зелений</option>
-                        </select>
-                    </div>
-                    <button type="button" id="btnSave" class="btn btn-success">Зберегти</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                </form>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Зберегти подію</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+					<input type="hidden" id="hdEventID" value="0" />
+					<div class="form-group">
+						<label>Тема</label>
+						<input type="text" id="txtSubject" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Лікар</label>
+						<select id="drpTherapistList" class="form-control" asp-items="@Model.TherapistList">  
+							<option value="">--Select--</option>  
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Паціент</label>
+						<select id="drpChildList" class="form-control" asp-items="@Model.ChildList">  
+							<option value="">--Select--</option>  
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Початок</label>
+						<div class="input-group" id="dtp1">
+							<input type="text" id="txtStart" class="form-control" />
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="checkbox">
+							<label><input type="checkbox" id="chkIsFullDay" checked="checked" />  На цілий день</label>
+						</div>
+					</div>
+					<div class="form-group" id="divEndDate" style="display:none">
+						<label>Кінець</label>
+						<div class="input-group date" id="dtp2">
+							<input type="text" id="txtEnd" class="form-control" />
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Опис</label>
+						<textarea id="txtDescription" rows="3" class="form-control"></textarea>
+					</div>
+					<div class="form-group">
+						<label>Колір події</label>
+						<select id="ddThemeColor" class="form-control">
+							<option value="">По замовчуванню</option>
+							<option value="red">Червоний</option>
+							<option value="blue">Блакитний</option>
+							<option value="black">Чорний</option>
+							<option value="green">Зелений</option>
+						</select>
+					</div>
+					<button type="button" id="btnSave" class="btn btn-success">Зберегти</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
@@ -92,204 +102,216 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
 @section Scripts{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            var events = [];
-            var selectedEvent = null;
-            FetchEventAndRenderCalendar();
-            function FetchEventAndRenderCalendar() {
-                events = [];
-                $.ajax({
-                    type: "GET",
-                    url: "/event/GetEvents",
-                    lang: 'uk',
-                    success: function (data) {
-                        $.each(data, function (i, v) {
-                            events.push({
-                                id: v.Id,
-                                title: v.Subject,
-                                description: v.Description,
-                                start: moment(v.Start),
-                                end: v.End != null ? moment(v.End) : null,
-                                color: v.ThemeColor,
-                                allDay: v.IsFullDay
-                            });
-                        })
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+			$(document).ready(function () {
+				var events = [];
+				var selectedEvent = null;
+				FetchEventAndRenderCalendar();
+				function FetchEventAndRenderCalendar() {
+					events = [];
+					$.ajax({
+						type: "GET",
+						url: "/event/GetEvents",
+						lang: 'uk',
+						success: function (data) {
+							$.each(data, function (i, v) {
+								events.push({
+									id: v.Id,
+									title: v.Subject,
+									description: v.Description,
+									start: moment(v.Start),
+									end: v.End != null ? moment(v.End) : null,
+									color: v.ThemeColor,
+									allDay: v.IsFullDay
+								});
+							})
 
-                        GenerateCalender(events);
-                    },
-                    error: function (error) {
-                        alert('failed');
-                    }
-                })
-            }
+							GenerateCalender(events);
+						},
+						error: function (error) {
+							alert('failed');
+						}
+					})
+				}
 
-            function GenerateCalender(events) {
-                $('#calender').fullCalendar('destroy');
-                $('#calender').fullCalendar({
-                    contentHeight: 450,
-                    defaultDate: new Date(),
-                    timeFormat: 'h(:mm)a',
-                    lang: 'uk',
-                    themeSystem: 'bootstrap',
-                    
-                    header: {
-                        left: 'prev,next, title',
-                        center: '',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                    },
-                   
-                    eventLimit: true,
-                    eventColor: '#378006',
-                    events: events,
-                    eventClick: function (calEvent, jsEvent, view) {
-                        selectedEvent = calEvent;
-                        $('#myModal #eventTitle').text(calEvent.title);
-                        var $description = $('<div/>');
-                        $description.append($('<p/>').html('<b>Початок:</b>' + calEvent.start.format("MM-DD-YYYY HH:mm a")));
-                        if (calEvent.end != null) {
-                            $description.append($('<p/>').html('<b>Кінець:</b>' + calEvent.end.format("MM-DD-YYYY HH:mm a")));
-                        }
-                        $description.append($('<p/>').html('<b>Опис:</b>' + calEvent.description));
-                        $('#myModal #pDetails').empty().html($description);
+				function GenerateCalender(events) {
+					$('#calender').fullCalendar('destroy');
+					$('#calender').fullCalendar({
+						contentHeight: 450,
+						defaultDate: new Date(),
+						slotLabelFormat:"HH:mm",
+						lang: 'uk',
+						monthNames: ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'],
+						monthNamesShort: ['Січ','Лют','Бер','Кві','Тра','Чер','Лип','Серп','Вер','Жов','Лис','Гру'],
+						dayNames: ['Неділя','Понеділок','Вівторок','Середа','Четвер','Пятниця','Субота'],
+						dayNamesShort: ['Нд','Пн','Вт','Ср','Чт','Пт','Сб'],
+						themeSystem: 'bootstrap',
+						header: {
+							left: 'prev,next today',
+							center: 'title',
+							right: 'month,agendaWeek,agendaDay'
+						},
+						buttonText: {
+							today: 'сьогодні',
+							month: 'місяць',
+							week: 'тиждень',
+							day: 'день'
+						},
+						allDayText: 'цілий день',
+						eventLimit: true,
+						eventColor: '#378006',
+						eventTextColor: 'white',
+						events: events,
+						eventClick: function (calEvent, jsEvent, view) {
+							selectedEvent = calEvent;
+							$('#myModal #eventTitle').text(calEvent.title);
+							var $description = $('<div/>');
+							$description.append($('<p/>').html('<b>Початок:</b>' + calEvent.start.format("DD-MM-YYYY HH:mm")));
+							if (calEvent.end != null) {
+								$description.append($('<p/>').html('<b>Кінець:</b>' + calEvent.end.format("DD-MM-YYYY HH:mm")));
+							}
+							if (calEvent.description != null) {
+							$description.append($('<p/>').html('<b>Опис:</b>' + calEvent.description));
+							}
+							$('#myModal #pDetails').empty().html($description);
 
-                        $('#myModal').modal();
-                    },
-                    selectable: true,
-                    select: function (start, end) {
-                        selectedEvent = {
-                            id: null,
-                            title: '',
-                            description: '',
-                            start: start,
-                            end: end,
-                            allDay: false,
-                            color: ''
-                        };
-                        openAddEditForm();
-                        $('#calendar').fullCalendar('unselect');
-                    },
-                    editable: true,
-                    eventDrop: function (event) {
-                        var data = {
-                            Id: event.id,
-                            Subject: event.title,
-                            Start: event.start.format('MM/DD/YYYY HH:mm A'),
-                            End: event.end != null ? event.end.format('MM/DD/YYYY HH:mm A') : null,
-                            Description: event.description,
-                            ThemeColor: event.color,
-                            IsFullDay: event.allDay
-                        };
-                        SaveEvent(data);
-                    }
-                })
-            }
+							$('#myModal').modal();
+						},
+						selectable: true,
+						select: function (start, end) {
+							selectedEvent = {
+								id: null,
+								title: '',
+								description: '',
+								start: start,
+								end: end,
+								allDay: false,
+								color: ''
+							};
+							openAddEditForm();
+							$('#calendar').fullCalendar('unselect');
+						},
+						editable: true,
+						eventDrop: function (event) {
+							var data = {
+								Id: event.id,
+								Subject: event.title,
+								Start: event.start.format('DD/MM/YYYY HH:mm'),
+								End: event.end != null ? event.end.format('DD/MM/YYYY HH:mm') : null,
+								Description: event.description,
+								ThemeColor: event.color,
+								IsFullDay: event.allDay
+							};
+							SaveEvent(data);
+						}
+					})
+				}
 
-            $('#btnEdit').click(function () {
-                //Open modal dialog for edit event
-                openAddEditForm();
-            })
-            $('#btnDelete').click(function () {
-                if (selectedEvent != null && confirm('Are you sure?')) {
-                    $.ajax({
-                        type: "POST",
-                        url: '/event/DeleteEvent',
-                        data: { 'id': selectedEvent.id },
-                        success: function (data) {
-                            if (data) {
-                                //Refresh the calender
-                                FetchEventAndRenderCalendar();
-                                $('#myModal').modal('hide');
-                            }
-                        },
-                        error: function () {
-                            alert('Failed');
-                        }
-                    })
-                }
-            })
-            $('#dtp1,#dtp2').datetimepicker({
-                format: 'MM/DD/YYYY HH:mm A'
-            });
-            $('#chkIsFullDay').change(function () {
-                if ($(this).is(':checked')) {
-                    $('#divEndDate').hide();
-                }
-                else {
-                    $('#divEndDate').show();
-                }
-            });
-            function openAddEditForm() {
-                if (selectedEvent != null) {
-                    $('#hdEventID').val(selectedEvent.id);
-                    $('#txtSubject').val(selectedEvent.title);
-                    $('#txtStart').val(selectedEvent.start.format('MM/DD/YYYY HH:mm A'));
-                    $('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
-                    $('#chkIsFullDay').change();
-                    $('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('MM/DD/YYYY HH:mm A') : '');
-                    $('#txtDescription').val(selectedEvent.description);
-                    $('#ddThemeColor').val(selectedEvent.color);
-                }
-                $('#myModal').modal('hide');
-                $('#myModalSave').modal('show');
-            }
-            $('#btnSave').click(function () {
-                //Validation/
-                if ($('#txtSubject').val().trim() == "") {
-                    alert('Subject required');
-                    return;
-                }
-                if ($('#txtStart').val().trim() == "") {
-                    alert('Start date required');
-                    return;
-                }
-                if ($('#chkIsFullDay').is(':checked') == false && $('#txtEnd').val().trim() == "") {
-                    alert('End date required');
-                    return;
-                }
-                else {
-                    var startDate = moment($('#txtStart').val(), "MM/DD/YYYY HH:mm A").toDate();
-                    var endDate = moment($('#txtEnd').val(), "MM/DD/YYYY HH:mm A").toDate();
-                    if (startDate > endDate) {
-                        alert('Invalid end date');
-                        return;
-                    }
-                }
+				$('#btnEdit').click(function () {
+					//Open modal dialog for edit event
+					openAddEditForm();
+				})
+				$('#btnDelete').click(function () {
+					if (selectedEvent != null && confirm('Ви впевнені?')) {
+						$.ajax({
+							type: "POST",
+							url: '/event/DeleteEvent',
+							data: { 'id': selectedEvent.id },
+							success: function (data) {
+								if (data) {
+									//Refresh the calender
+									FetchEventAndRenderCalendar();
+									$('#myModal').modal('hide');
+								}
+							},
+							error: function () {
+								alert('Failed');
+							}
+						})
+					}
+				})
+				$('#dtp1,#dtp2').datetimepicker({
+					format: 'DD/MM/YYYY HH:mm'
+				});
+				$('#chkIsFullDay').change(function () {
+					if ($(this).is(':checked')) {
+						$('#divEndDate').hide();
+					}
+					else {
+						$('#divEndDate').show();
+					}
+				});
+				function openAddEditForm() {
+					console.log(selectedEvent)
+					if (selectedEvent != null) {
+						$('#hdEventID').val(selectedEvent.id);
+						$('#txtSubject').val(selectedEvent.title);
+						$('#txtStart').val(selectedEvent.start.format('DD/MM/YYYY HH:mm'));
+						$('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
+						$('#chkIsFullDay').change();
+						$('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('DD/MM/YYYY HH:mm') : '');
+						$('#txtDescription').val(selectedEvent.description);
+						$('#ddThemeColor').val(selectedEvent.color);
+					}
+					$('#myModal').modal('hide');
+					$('#myModalSave').modal('show');
+				}
+				$('#btnSave').click(function () {
+					//Validation/
+					if ($('#txtSubject').val().trim() == "") {
+						alert('Введіть тему');
+						return;
+					}
+					if ($('#txtStart').val().trim() == "") {
+						alert('Введіть початкову дату');
+						return;
+					}
+					if ($('#chkIsFullDay').is(':checked') == false && $('#txtEnd').val().trim() == "") {
+						alert('Введіть кінцеву дату');
+						return;
+					}
+					else {
+						var startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm").toDate();
+						var endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm").toDate();
+						if (startDate > endDate) {
+							alert('Неправильно вказана дата');
+							return;
+						}
+					}
 
-                var data = {
-                    Id: $('#hdEventID').val(),
-                    Subject: $('#txtSubject').val(),
-                    Start: $('#txtStart').val(),
-                    End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
-                    Description: $('#txtDescription').val(),
-                    ThemeColor: $('#ddThemeColor').val(),
-                    IsFullDay: $('#chkIsFullDay').is(':checked')
-                }
-                SaveEvent(data);
-                // call function for submit data to the server
-            })
-            function SaveEvent(data) {
-                $.ajax({
-                    type: "POST",
-                    url: '/event/SaveEvent',
-                    data: data,
-                    success: function (data) {
-                        if (data) {
-                            //Refresh the calender
-                            FetchEventAndRenderCalendar();
-                            $('#myModalSave').modal('hide');
-                        }
-                    },
-                    error: function () {
-                        alert('Failed');
-                    }
-                })
-            }
-        })
-    </script>
+					var data = {
+						Id: $('#hdEventID').val(),
+						Subject: $('#txtSubject').val(),
+						Start: $('#txtStart').val(),
+						End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
+						Description: $('#txtDescription').val(),
+						ThemeColor: $('#ddThemeColor').val(),
+						IsFullDay: $('#chkIsFullDay').is(':checked')
+					}
+					SaveEvent(data);
+					// call function for submit data to the server
+				})
+				function SaveEvent(data) {
+					console.log(data)
+					$.ajax({
+						type: "POST",
+						url: '/event/SaveEvent',
+						data: data,
+						success: function (data) {
+							//Refresh the calender
+							FetchEventAndRenderCalendar();
+							$('#myModalSave').modal('hide');
+						},
+						error: function () {
+							alert('Failed');
+						}
+					})
+				}
+			})
+</script>
 }
 
 @await Html.PartialAsync("_IndexFooter")

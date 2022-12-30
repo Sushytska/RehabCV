@@ -31,7 +31,7 @@ namespace RehabCV.Working
                 var _rehabilitation = scope.ServiceProvider.GetService<IRehabilitation<Rehabilitation>>();
                 var _queue = scope.ServiceProvider.GetService<IQueue<Queue>>();
                 var _group = scope.ServiceProvider.GetService<IGroup<Group>>();
-                var _child = scope.ServiceProvider.GetService<IClild<Child>>();
+                var _child = scope.ServiceProvider.GetService<IChild<Child>>();
 
                 var dates = await _events.FindAll();
 

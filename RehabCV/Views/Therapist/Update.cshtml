@@ -1,0 +1,72 @@
+﻿@model RehabCV.DTO.TherapistDTO
+@{
+    ViewData["Title"] = "Змінити дані";
+}
+
+@await Html.PartialAsync("_IndexHeader")
+
+<div class="row" style="margin-top: 12%;">
+    <div class="col-md-4" style="margin: auto">
+        <h2 style="text-align: center">@ViewData["Title"]</h2>
+        <form method="post" asp-controller="Therapist" asp-action="Update" id="child">
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstNameOfTherapist"></label>
+                <input asp-for="FirstNameOfTherapist" class="form-control" />
+                <span asp-validation-for="FirstNameOfTherapist" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MiddleNameOfTherapist"></label>
+                <input asp-for="MiddleNameOfTherapist" class="form-control" />
+                <span asp-validation-for="MiddleNameOfTherapist" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastNameOfTherapist"></label>
+                <input asp-for="LastNameOfTherapist" class="form-control" />
+                <span asp-validation-for="LastNameOfTherapist" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthdayOfTherapist"></label>
+                <input asp-for="BirthdayOfTherapist" class="form-control" />
+                <span asp-validation-for="BirthdayOfTherapist" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Region"></label>
+                <input asp-for="Region" class="form-control" />
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="District"></label>
+                <input asp-for="District" class="form-control" />
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post"></label>
+                <input asp-for="Post" class="form-control" />
+                <span asp-validation-for="Post" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" style="width: 100%" />
+            </div>
+        </form>
+        <a asp-action="Index">Назад до списку</a>
+    </div>
+</div>
+
+@await Html.PartialAsync("_IndexFooter")
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

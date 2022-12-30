@@ -37,7 +37,7 @@ namespace RehabCV
         {
             services.Configure<ApplicationConfiguration>(Configuration.GetSection("ApplicationConfiguration"));
             services.AddDbContext<RehabCVContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
 
             services.AddIdentity<User, IdentityRole>()
@@ -49,7 +49,7 @@ namespace RehabCV
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
             });
 
-            services.AddScoped<IClild<Child>, ChildRepository>();
+            services.AddScoped<IChild<Child>, ChildRepository>();
             services.AddScoped<IEvent<Event>, EventRepository>();
             services.AddScoped<IRehabilitation<Rehabilitation>, RehabRepository>();
             services.AddScoped<IQueue<Queue>, QueueRepository>();
@@ -57,6 +57,7 @@ namespace RehabCV
             services.AddScoped<INumberOfCh<NumberOfChildren>, NumberOfChRepository>();
             services.AddScoped<IReserve<Reserve>, ReserveRepository>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<ITherapist<Therapist>, TherapistRepository>();
 
             services.AddHostedService<OneDayHostedService>();
             services.AddSingleton<IWorker, Worker>();

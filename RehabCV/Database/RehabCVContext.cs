@@ -16,6 +16,7 @@ namespace RehabCV.Database
         public DbSet<Reserve> Reserves { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<Therapist> Therapists { get; set; }
         public DbSet<NumberOfChildren> NumberOfChildren { get; set;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -72,6 +72,11 @@ namespace RehabCV.Controllers
         {
             var group = await _group.FindById(id);
 
+            if (group == null)
+            {
+                return NotFound();
+            }
+
             var groupDTO = new GroupDTO
             {
                 NameOfDisease = group.NameOfDisease

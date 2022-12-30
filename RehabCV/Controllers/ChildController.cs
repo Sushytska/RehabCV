@@ -19,12 +19,12 @@ namespace RehabCV.Controllers
     public class ChildController : Controller
     {
         private readonly UserManager<User> _userManager;
-        private readonly IClild<Child> _repository;
+        private readonly IChild<Child> _repository;
         private readonly IGroup<Group> _group;
         private const string policy = "RequireAdminRole";
 
         public ChildController(UserManager<User> userManager, 
-                               IClild<Child> repository,
+                               IChild<Child> repository,
                                IGroup<Group> group)
         {
             _userManager = userManager;

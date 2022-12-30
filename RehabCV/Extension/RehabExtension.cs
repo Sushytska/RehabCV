@@ -23,6 +23,11 @@ namespace RehabCV.Extension
                 {
                     var rehabilitation = await _rehabilitation.FindByChildId(child.Id);
 
+                    if (rehabilitation == null)
+                    {
+                        continue;
+                    }
+
                     var group = await _group.FindById(child.GroupId);
 
                     var rehab = new RehabViewModel
@@ -56,7 +61,7 @@ namespace RehabCV.Extension
                                                  IQueue<Queue> _queue, 
                                                  Rehabilitation rehabilitation, 
                                                  IGroup<Group> _group,
-                                                 IClild<Child> _child,
+                                                 IChild<Child> _child,
                                                  IReserve<Reserve> _reserve,
                                                  IRehabilitation<Rehabilitation> _rehabilitation)
         {
@@ -107,7 +112,7 @@ namespace RehabCV.Extension
         }
 
         public static async Task ChangeDisease(this IGroup<Group> _group, 
-                                               IClild<Child> _child,
+                                               IChild<Child> _child,
                                                Child child,
                                                string nameOfDisease)
         {
@@ -121,7 +126,7 @@ namespace RehabCV.Extension
         }
 
         public static async Task AddToReserve(this IReserve<Reserve> _reserve, 
-                                             IClild<Child> _child,
+                                             IChild<Child> _child,
                                              string childId,
                                              string groupOfDisease)
         {

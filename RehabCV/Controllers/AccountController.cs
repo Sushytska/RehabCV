@@ -49,6 +49,12 @@ namespace RehabCV.Controllers
             {
                 var user = await _userManager.FindByNameAsync(model.Email);
 
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Невірний логін або пароль");
+                    return View(model);              
+                }
+
                 if (!await _userManager.IsEmailConfirmedAsync(user))
                 {
                     ModelState.AddModelError(string.Empty, "Ви не підтвердили свою електронну пошту!");
@@ -91,11 +97,12 @@ namespace RehabCV.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var userWithSameEmail = model.Email == null ? await _userManager.FindByNameAsync(model.Login)
-                                                        : await _userManager.FindByEmailAsync(model.Email);
 
             if (ModelState.IsValid)
             {
+                var userWithSameEmail = model.Email == null ? await _userManager.FindByNameAsync(model.Login)
+                                                        : await _userManager.FindByEmailAsync(model.Email);
+
                 if (userWithSameEmail == null)
                 {
                     var user = new User
